@@ -26,7 +26,7 @@ This script retrieves SSL certificate information for a list of domains, storing
    ```
 
 2. Ensure you have OpenSSL installed and the development headers if needed:
-   - RedHat/CentOS:
+   - RedHat/Rockylinux:
      ```bash
      sudo yum install openssl-devel
      ```
