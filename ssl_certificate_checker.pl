@@ -5,6 +5,11 @@ use Net::SSLeay;
 use Parallel::ForkManager;
 use File::Path qw(make_path);
 
+# ANSI color codes for green and red
+my $green = "\e[32m";
+my $red = "\e[31m";
+my $reset = "\e[0m";
+
 # Maximum number of parallel processes
 my $max_processes = 5;
 my $pm = Parallel::ForkManager->new($max_processes);
@@ -58,7 +63,8 @@ foreach my $domain (@domains) {
         print $err_out "Error reason: $!\n";
         close $err_out;
 
-        print "Error output file saved: $error_dir$output_filename\n";
+        # Print error message in red
+        print "${red}Error output file saved: $error_dir$output_filename${reset}\n";
         
         $pm->finish;
         next;
@@ -82,7 +88,8 @@ foreach my $domain (@domains) {
     print $out "Valid until: $not_after\n";
     close $out;
 
-    print "Success output file saved: $success_dir$output_filename\n";
+    # Print success message in green
+    print "${green}Success output file saved: $success_dir$output_filename${reset}\n";
 
     $pm->finish;  # End the parallel process
 }
