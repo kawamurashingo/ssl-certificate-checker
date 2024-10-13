@@ -22,7 +22,7 @@ This script retrieves SSL certificate information for a list of domains, storing
 
 1. Install the required Perl modules:
    ```bash
-   cpan install IO::Socket::SSL Net::SSLeay Parallel::ForkManager
+   sudo cpan install IO::Socket::SSL Net::SSLeay Parallel::ForkManager
    ```
 
 2. Ensure you have OpenSSL installed and the development headers if needed:
