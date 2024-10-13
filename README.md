@@ -1,12 +1,13 @@
 # SSL Certificate Checker
 
-This script retrieves SSL certificate information for a list of domains, storing the output in separate directories for successful connections and errors. It also supports connecting through a proxy for specific subdomains.
+This script retrieves SSL certificate information for a list of domains, storing the output in separate directories for successful connections and errors. It also supports connecting through a proxy for specific subdomains and utilizes parallel processing for efficiency.
 
 ## Features
 
 - Retrieves SSL certificate details including subject, issuer, and validity period.
 - Supports proxy connections for designated subdomains.
 - Outputs results to `output/success/` for successful connections and `output/error/` for connection errors.
+- Uses parallel processing to handle multiple domains simultaneously, improving speed and efficiency.
 
 ## Requirements
 
@@ -22,6 +23,7 @@ This script retrieves SSL certificate information for a list of domains, storing
 1. Install the required Perl modules:
    ```bash
    cpan install IO::Socket::SSL Net::SSLeay Parallel::ForkManager
+   ```
 
 2. Ensure you have OpenSSL installed and the development headers if needed:
    - RedHat/CentOS:
@@ -52,9 +54,14 @@ This script retrieves SSL certificate information for a list of domains, storing
 
 ## Configuration
 
-To enable proxy for specific subdomains, modify the condition within the script where `sub.example.com` appears to match the desired subdomains. Also, configure the `$proxy_host` and `$proxy_port` variables accordingly.
+### Proxy Settings
+
+The script supports proxy connections for specific subdomains. To enable this, modify the condition within the script where `sub.example.com` appears to match the desired subdomains. Configure the `$proxy_host` and `$proxy_port` variables for your proxy server.
+
+### Parallel Processing
+
+The script uses parallel processing to handle multiple domains at once. You can adjust the number of parallel processes by modifying the `$max_processes` variable in the script. By default, it is set to 5. This setting can help improve speed when checking multiple domains.
 
 ## License
 
-This project is licensed under the MIT License.
-
+This project is licensed under the MIT License
