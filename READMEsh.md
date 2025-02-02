@@ -12,8 +12,6 @@
   特定のホスト（例: `sub.example.com`）に対しては、プロキシ経由で接続するためのオプションを設定します。  
   ※ただし、プロキシ接続は OpenSSL のバージョンに依存します。
 - **並列処理**: 最大 5 件のジョブを同時に実行し、処理の高速化を図ります。
-- **エラーハンドリング**:  
-  `set -euo pipefail` を使用せず、各処理毎にエラー状態をチェックするように実装されています。
 
 ## 依存関係
 - **OpenSSL**  
@@ -56,12 +54,12 @@
 
 2. **実行権限の付与**  
    ```bash
-   chmod +x script.sh
+   chmod +x ssl_certificate_checker.sh
    ```
 
 3. **スクリプトの実行**  
    ```bash
-   ./script.sh
+   ./ssl_certificate_checker.sh
    ```
 
 4. **結果の確認**  
